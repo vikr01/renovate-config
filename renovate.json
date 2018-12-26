@@ -1,0 +1,22 @@
+{
+  "extends": ["config:base"],
+
+  "rangeStrategy": "bump",
+
+  "engines": {
+    "enabled": false
+  },
+
+  "separateMinorPatch": true,
+
+  "packages": [
+    {
+      "packagePattern": "(^|.*-)(eslint|prettier|stylelint)(-.*|$)",
+      "groupName": "linters"
+    }
+  ],
+
+  "schedule": "after 6am and before 5pm on saturday",
+
+  "timezone": "America/Los_Angeles"
+}
