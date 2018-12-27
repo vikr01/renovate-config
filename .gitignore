@@ -1,3 +1,5 @@
 **/*
 !.gitignore
 !renovate.json
+!package.json
+!LICENSE

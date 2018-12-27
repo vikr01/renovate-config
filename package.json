@@ -1,0 +1,11 @@
+{
+  "name": "@vikr01/renovate-config",
+  "version": "0.0.0",
+  "main": "renovate.json",
+  "repository": "https://github.com/vikr01/renovate-config.git",
+  "author": "vikr01 <vik120@icloud.com>",
+  "license": "MIT",
+  "files": [
+    "renovate.json"
+  ]
+}
