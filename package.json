@@ -1,11 +1,68 @@
 {
   "name": "@vikr01/renovate-config",
+  "license": "MIT",
+  "author": "vikr01 <vik120@icloud.com>",
+  "repository": "https://github.com/vikr01/renovate-config.git",
   "version": "0.0.0",
   "main": "renovate.json",
-  "repository": "https://github.com/vikr01/renovate-config.git",
-  "author": "vikr01 <vik120@icloud.com>",
-  "license": "MIT",
-  "files": [
-    "renovate.json"
-  ]
+  "files": [],
+  "scripts": {
+    "fix": "prettier --write '**/*.{json,md,js,jsx,css,scss,less,yml}'",
+    "postfix": "prettier-package-json --write package.json",
+    "prepublishOnly": "renovate-config-validator",
+    "test": "renovate-config-validator"
+  },
+  "devDependencies": {
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
+    "prettier-package-json": "^2.0.1",
+    "renovate": "latest"
+  },
+  "keywords": [
+    "renovate-config",
+    "renovate-preset"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{json,md,js,jsx,css,scss,less,yml}": [
+        "prettier --write",
+        "git add"
+      ],
+      "package.json": [
+        "prettier-package-json --write",
+        "git add"
+      ]
+    },
+    "globOptions": {
+      "dot": true
+    }
+  },
+  "renovate-config": {
+    "default": {
+      "extends": [
+        "config:base"
+      ],
+      "rangeStrategy": "bump",
+      "engines": {
+        "enabled": false
+      },
+      "separateMinorPatch": true,
+      "packageRules": [
+        {
+          "packagePatterns": [
+            "(^|.*-)(eslint|prettier|stylelint)(-.*|$)"
+          ],
+          "groupName": "linters"
+        }
+      ],
+      "schedule": "after 6am and before 5pm on saturday",
+      "timezone": "America/Los_Angeles"
+    }
+  }
 }
